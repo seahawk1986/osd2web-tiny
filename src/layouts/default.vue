@@ -22,6 +22,10 @@
         <v-icon :icon="isPlaying ? 'mdi-play' : 'mdi-pause'" size="60" />
         <v-icon color="grey-darken-3" icon="mdi-fast-forward" size="60" />
       </div>
+      <div v-else>
+        Waiting for Plugin data...
+        <v-progress-circular :indeterminate="true" size="64" />
+      </div>
       <!-- {{ store.CurrentView }} -->
     </v-footer>
   </v-app>

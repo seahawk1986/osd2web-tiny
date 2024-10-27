@@ -23,9 +23,6 @@
         :model-value="(store.LiveTvData.present.endtime - store.LiveTvData.present.seen)"
       />
     </v-card-title>
-    <v-card-title v-else>
-      Waiting for Plugin data...
-      <v-progress-circular :indeterminate="true" size="128" /></v-card-title>
     <v-card-text>
       <v-card
         v-if="store.LiveTvData"
