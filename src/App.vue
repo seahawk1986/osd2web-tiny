@@ -101,7 +101,7 @@
                 store.ReplayData = data.object
                 break
               case 'replaycontrol':
-                // console.log('got replaycontrol: ', data.object)
+                console.log('got replaycontrol: ', data.object)
                 store.ReplayControl = data.object
                 break
               case 'actual':

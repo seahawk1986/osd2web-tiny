@@ -1,6 +1,6 @@
 <template>
   <v-card
-  :border="false"
+    :border="false"
     class="ma-0 pa-0"
     elevation="0"
     flat
@@ -11,7 +11,7 @@
   >
     <v-card-title class="ma-0 pa-0 ga-0 text-h3">
       {{ starttime }}
-      <v-divider :vertical="true" />
+      <v-divider opacity="0" :vertical="true" />
       {{ currentEventData.title }}
       <!-- ({{ currentEventData.starttime <= currentEventData.seen ? seen + '/' : '' }}{{ duration }}) -->
     </v-card-title>

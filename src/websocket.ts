@@ -18,6 +18,8 @@ interface WsFunctionInterface {
 //   (event: Event|ErrorEvent): any|null
 // }
 
+// TODO: currently this implementation doesn't recognize if the VDR dies resp. is restarted
+
 interface WsCloseFunctionInterface {
   (event: CloseEvent): any|null
 }
