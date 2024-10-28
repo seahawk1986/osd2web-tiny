@@ -82,9 +82,11 @@
                 break
               case 'skinstate':
                 console.log('got skinstate: ', data.object)
+                store.SkinStateData = data.object
                 break
               case 'commands':
                 console.log('got commands: ', data.object)
+                store.CommandData = data.object
                 break
 
               case 'timers':
@@ -112,6 +114,7 @@
                 break
               case 'customdata':
                 console.log('got customdata: ', data.object)
+                store.CustomData = data.object
                 break
               default:
                 console.log('Warning: unknown event type: ', data.event)

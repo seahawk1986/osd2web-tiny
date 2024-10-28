@@ -127,19 +127,37 @@ export interface TimerInterface {
   weekdays: number
 }
 
+export interface DiashowInterface {
+  active: number
+  // TODO: add optional entries
+}
+
+export interface SkinstateInterface {
+  active: number
+  // TODO: add optional entries
+}
+
 export const useAppStore = defineStore('app', () => {
+  const CommandData: Ref<Object> = ref({})
+  const CustomData: Ref<Object> = ref({})
+  const DiashowData: Ref<DiashowInterface|null> = ref(null)
   const LiveTvData: Ref<actualDataInterface|null> = ref(null)
   const ReplayControl: Ref<replayControlInterface|null> = ref(null)
   const ReplayData: Ref<ReplayInterface|null> = ref(null)
   const RecordingsData: Ref<RecordingInterface[]> = ref([])
+  const SkinStateData: Ref<SkinstateInterface|null> = ref(null)
   const TimerData: Ref<TimerInterface[]> = ref([])
   const CurrentView: Ref<string> = ref('actual')
 
   return {
+    CommandData,
+    CustomData,
+    DiashowData,
     LiveTvData,
     ReplayControl,
     ReplayData,
     RecordingsData,
+    SkinStateData,
     TimerData,
     CurrentView,
   }
