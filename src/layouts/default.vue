@@ -43,25 +43,45 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer v-if="!isInitializing" max-height="20vh">
-      <CurrentTime class="text-h3" />
-      <v-divider opacity="0" thickness="15vw" vertical />
-      <div v-if="!activeReplay">
-        <span>
-          <v-icon :color="hasDolby ? 'warning' : 'grey-darken-3'" icon="mdi-audio-video" size="60" />
-          <v-icon :color="hasMultiLang ? 'warning': 'grey-darken-3'" icon="mdi-soundbar" size="60" />
-          <v-icon :color="hasTeletext ? 'warning' : 'grey-darken-3'" icon="mdi-text-box-outline" size="60" />
-          <v-icon :color="isEncrypted ? 'warning' : 'grey-darken-3'" icon="mdi-key-outline" size="60" />
-          <v-icon :color="isRecording ? 'warning' : 'grey-darken-3'" icon="mdi-record-rec" size="60" />
-        </span>
-      </div>
-      <div v-else-if="activeReplay">
-        <v-icon color="grey-darken-3" icon="mdi-rewind" size="60" />
-        <v-icon :icon="isPlaying ? 'mdi-play' : 'mdi-pause'" size="60" />
-        <v-icon color="grey-darken-3" icon="mdi-fast-forward" size="60" />
-      </div>
-      <!-- {{ store.CurrentView }} -->
+    <v-footer v-if="!isInitializing" height="14vh">
+      <v-container v-if="!activeReplay" fluid>
+        <v-col>
+          <v-row class="d-flex justify-space-between align-center">
+            <CurrentTime class="text-h3" />
+            <v-icon :color="hasDolby ? 'warning' : 'grey-darken-3'" icon="mdi-audio-video" size="60" />
+            <v-icon :color="hasMultiLang ? 'warning': 'grey-darken-3'" icon="mdi-soundbar" size="60" />
+            <v-icon :color="hasTeletext ? 'warning' : 'grey-darken-3'" icon="mdi-text-box-outline" size="60" />
+            <v-icon :color="isEncrypted ? 'warning' : 'grey-darken-3'" icon="mdi-key-outline" size="60" />
+            <v-badge :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" :content="numPendingTimers" inline>
+              <v-icon :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" icon="mdi-timer-outline" size="60" />
+            </v-badge>
+            <v-badge color="warning" :content="numNewRecordings" inline>
+              <v-icon :color="isRecording ? 'warning' : 'grey-darken-3'" icon="mdi-record-rec" size="60" />
+            </v-badge>
+          </v-row>
+        </v-col>
+      </v-container>
+      <v-container v-else fluid>
+        <v-col>
+          <v-row class="d-flex justify-space-between align-center">
+            <CurrentTime class="text-h3" />
+            <div class="d-flex justify-center align-center">
+              <v-icon color="grey-darken-3" icon="mdi-rewind" size="60" />
+              <v-icon :color="isPlaying ? 'primary' : 'secondary'" :icon="isPlaying ? 'mdi-play' : 'mdi-pause'" size="60" />
+              <v-icon color="grey-darken-3" icon="mdi-fast-forward" size="60" />
+            </div>
+            <v-badge :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" :content="numPendingTimers" inline>
+              <v-icon :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" icon="mdi-timer-outline" size="60" />
+            </v-badge>
+            <v-badge color="warning" :content="numNewRecordings" inline>
+              <v-icon :color="isRecording ? 'warning' : 'grey-darken-3'" icon="mdi-record-rec" size="60" />
+            </v-badge>
+              <!-- {{ store.CurrentView }} -->
+          </v-row>
+        </v-col>
+      </v-container>
     </v-footer>
+
   </v-app>
 </template>
 
@@ -99,5 +119,22 @@
 
   const isInitializing = computed(() => {
     return store.LiveTvData === null
+  })
+
+  const numNewRecordings = computed(() => {
+    let counter: number = 0
+    store.RecordingsData.forEach(recording => {
+      recording.isnew === 1 && counter++
+      console.log('counter has value: ', counter)
+    })
+    return counter
+  })
+
+  const numPendingTimers = computed(() => {
+    let counter: number = 0
+    store.TimerData.forEach(timer => {
+      (timer.pending > 0 || timer.recording > 0) && counter++
+    })
+    return counter
   })
 </script>

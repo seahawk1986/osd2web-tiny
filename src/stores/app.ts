@@ -80,16 +80,67 @@ export interface ReplayInterface {
   title?: string
 }
 
+export interface RecordingInterface {
+  basename: string
+  event: EventInterface
+  filename?: string
+  filesizemb?: number
+  folder?: string
+  hasmarks?: number
+  images?: string[]
+  info?: {
+    aux: string
+    channelid: string
+    channelname: string
+    description: string
+    framespersecond: number
+  }
+  isedited?: number
+  isnew?: number
+  lengthinseconds?: number
+  name?: string
+  start?: number
+  title?: string
+}
+
+export interface TimerInterface {
+  aux: string
+  channel: {
+    channelid: string
+    channelname: string
+    chanelnumber: number
+    provider: string
+  }
+  day: number
+  event: EventInterface
+  expired: number
+  file: string
+  firstday: number
+  flags: number
+  id: number
+  invpsmargin: number
+  pending: number
+  recording: number
+  remote: string
+  starttime: number
+  stoptime: number
+  weekdays: number
+}
+
 export const useAppStore = defineStore('app', () => {
   const LiveTvData: Ref<actualDataInterface|null> = ref(null)
   const ReplayControl: Ref<replayControlInterface|null> = ref(null)
   const ReplayData: Ref<ReplayInterface|null> = ref(null)
+  const RecordingsData: Ref<RecordingInterface[]> = ref([])
+  const TimerData: Ref<TimerInterface[]> = ref([])
   const CurrentView: Ref<string> = ref('actual')
 
   return {
     LiveTvData,
     ReplayControl,
     ReplayData,
+    RecordingsData,
+    TimerData,
     CurrentView,
   }
 })

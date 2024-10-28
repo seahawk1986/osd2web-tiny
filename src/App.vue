@@ -89,9 +89,11 @@
 
               case 'timers':
                 console.log('got timers: ', data.object)
+                store.TimerData = data.object
                 break
               case 'recordings':
                 console.log('got recordings: ', data.object)
+                store.RecordingsData = data.object
                 break
               case 'diashow':
                 console.log('got diashow: ', data.object)
