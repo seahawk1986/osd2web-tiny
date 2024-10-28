@@ -127,6 +127,15 @@ export interface TimerInterface {
   weekdays: number
 }
 
+export interface CustomDataInterface {
+  [key: string]: {
+    color: string
+    name: string
+    value: string
+    vcolor: string
+  } []
+}
+
 export interface DiashowInterface {
   active: number
   // TODO: add optional entries
@@ -139,7 +148,7 @@ export interface SkinstateInterface {
 
 export const useAppStore = defineStore('app', () => {
   const CommandData: Ref<Object> = ref({})
-  const CustomData: Ref<Object> = ref({})
+  const CustomData: Ref<CustomDataInterface|null> = ref(null)
   const DiashowData: Ref<DiashowInterface|null> = ref(null)
   const LiveTvData: Ref<actualDataInterface|null> = ref(null)
   const ReplayControl: Ref<replayControlInterface|null> = ref(null)

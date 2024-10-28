@@ -21,7 +21,6 @@
   const isOnlyView: Ref<boolean> = ref(true)
   const tftPrio: Ref<string|null> = ref(null)
   const ErrorMessage: Ref<string|null> = ref(null)
-  const curView: Ref<string|null> = ref(null)
 
   interface roleChangeInterface {
     role: string
