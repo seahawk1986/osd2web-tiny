@@ -85,7 +85,6 @@
     let counter: number = 0
     store.RecordingsData.forEach(recording => {
       recording.isnew === 1 && counter++
-      console.log('counter has value: ', counter)
     })
     return counter
   })

@@ -88,26 +88,26 @@
                 break
 
               case 'timers':
-                console.log('got timers: ', data.object)
+                // console.log('got timers: ', data.object)
                 store.TimerData = data.object
                 break
               case 'recordings':
-                console.log('got recordings: ', data.object)
+                // console.log('got recordings: ', data.object)
                 store.RecordingsData = data.object
                 break
               case 'diashow':
                 console.log('got diashow: ', data.object)
                 break
               case 'replay':
-                console.log('got replay: ', data.object)
+                // console.log('got replay: ', data.object)
                 store.ReplayData = data.object
                 break
               case 'replaycontrol':
-                console.log('got replaycontrol: ', data.object)
+                // console.log('got replaycontrol: ', data.object)
                 store.ReplayControl = data.object
                 break
               case 'actual':
-                console.log('got actual (current tv): ', data.object)
+                // console.log('got actual (current tv): ', data.object)
                 store.LiveTvData = data.object
                 break
               case 'customdata':
