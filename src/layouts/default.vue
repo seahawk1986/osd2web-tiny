@@ -45,7 +45,7 @@
     </v-main>
     <v-footer v-if="!isInitializing" height="14vh">
       <LiveTvFooter
-        v-if="!isInitializing"
+        v-if="!activeReplay"
         :is-recording="isRecording"
         :num-new-recordings="numNewRecordings"
         :num-pending-timers="numPendingTimers"
