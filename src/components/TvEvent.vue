@@ -13,12 +13,19 @@
       {{ starttime }}
       <v-divider opacity="0" :vertical="true" />
       {{ currentEventData.title }}
-      <!-- ({{ currentEventData.starttime <= currentEventData.seen ? seen + '/' : '' }}{{ duration }}) -->
     </v-card-title>
-    <v-card-text class="ma-0 pa-0 ga-0 text-h5">
+    <v-card-text v-if="currentEventData.shorttext.length > 0 && currentEventData.description.length > 0" class="ma-0 pa-0 ga-0 text-h5">
+      <!-- both shorttext and description -->
+      {{ currentEventData.shorttext }} <br>
+      {{ currentEventData.description }}
+    </v-card-text>
+    <v-card-text v-else-if="currentEventData.shorttext.length > 0 && currentEventData.description.length === 0" class="ma-0 pa-0 ga-0 text-h5">
+      <!-- only shorttext, no description -->
       {{ currentEventData.shorttext }}
-      <!-- <v-divider thickness="7" />
-      {{ currentEventData.description }} -->
+    </v-card-text>
+    <v-card-text v-else class="ma-0 pa-0 ga-0 text-h5">
+      <!-- not shorttext, onbly description -->
+      {{ currentEventData.description }}
     </v-card-text>
   </v-card>
 </template>
