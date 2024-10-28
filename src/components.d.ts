@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     CurrentTime: typeof import('./components/CurrentTime.vue')['default']
+    ReplayFooter: typeof import('./components/ReplayFooter.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TvEvent: typeof import('./components/TvEvent.vue')['default']

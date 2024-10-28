@@ -61,28 +61,14 @@
           </v-row>
         </v-col>
       </v-container>
-      <v-container v-else fluid>
-        <v-col>
-          <v-row class="d-flex justify-space-between align-center">
-            <CurrentTime class="text-h3" />
-            <div class="d-flex justify-center align-center">
-              <v-icon color="grey-darken-3" icon="mdi-rewind" size="60" />
-              <v-icon :color="isPlaying ? 'primary' : 'secondary'" :icon="isPlaying ? 'mdi-play' : 'mdi-pause'" size="60" />
-              <v-icon color="grey-darken-3" icon="mdi-fast-forward" size="60" />
-            </div>
-            <v-badge :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" :content="numPendingTimers" inline>
-              <v-icon :color="numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" icon="mdi-timer-outline" size="60" />
-            </v-badge>
-            <v-badge color="warning" :content="numNewRecordings" inline>
-              <v-icon :color="isRecording ? 'warning' : 'grey-darken-3'" icon="mdi-record-rec" size="60" />
-            </v-badge>
-              <!-- {{ store.CurrentView }} -->
-          </v-row>
-        </v-col>
-      </v-container>
-    </v-footer>
-
-  </v-app>
+      <ReplayFooter
+        v-else
+        :is-playing="isPlaying"
+        :is-recording="isRecording"
+        :num-new-recordings="numNewRecordings"
+        :num-pending-timers="numPendingTimers"
+      />
+    </v-footer></v-app>
 </template>
 
 <script lang="ts" setup>
