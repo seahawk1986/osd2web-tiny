@@ -24,7 +24,7 @@
       {{ currentEventData.shorttext }}
     </v-card-text>
     <v-card-text v-else class="ma-0 pa-0 ga-0 text-h5">
-      <!-- not shorttext, onbly description -->
+      <!-- not shorttext, only description -->
       {{ currentEventData.description }}
     </v-card-text>
   </v-card>
