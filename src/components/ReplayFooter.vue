@@ -44,24 +44,30 @@
     return 'primary'
   })
 
+  function colorBySpeed (speed: number|undefined): string {
+    switch (speed) {
+      case -1:
+        return 'grey-darken-3'
+      case 1:
+        return 'secondary'
+      case 2:
+        return 'primary-darken-1'
+      case 3:
+        return 'primary'
+      default:
+        return inactiveColor
+    }
+  }
+
   const forwardReplayColor = computed(() => {
     const isPlaying = store.ReplayControl?.play
     const speed = store.ReplayControl?.speed
     const isForward = store.ReplayControl?.forward === 1
     if (isPlaying && isForward) {
       // fast forward
-      switch (speed) {
-        case -1:
-          return 'grey-darken-3'
-        case 1:
-          return 'secondary'
-        case 2:
-          return 'primary-darken-1'
-        case 3:
-          return 'primary'
-      }
+      return colorBySpeed(speed)
     }
-    return 'grey-darken-3'
+    return inactiveColor
   })
 
   const rewindReplayColor = computed(() => {
@@ -69,17 +75,9 @@
     const speed = store.ReplayControl?.speed
     const isBackward = store.ReplayControl?.forward === 0
     if (!isPlaying && isBackward) {
-      switch (speed) {
-        case -1:
-          return 'grey-darken-3'
-        case 1:
-          return 'secondary'
-        case 2:
-          return 'primary-darken-1'
-        case 3:
-          return 'primary'
-      }
+      // rewind
+      return colorBySpeed(speed)
     }
-    return 'grey-darken-3'
+    return inactiveColor
   })
 </script>
