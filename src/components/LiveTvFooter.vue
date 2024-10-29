@@ -8,7 +8,7 @@
         <v-icon :color="hasTeletext ? 'warning' : 'grey-darken-3'" icon="mdi-text-box-outline" size="60" />
         <v-icon :color="isEncrypted ? 'warning' : 'grey-darken-3'" icon="mdi-key-outline" size="60" />
         <v-badge :color="props.numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" :content="props.numPendingTimers" inline>
-          <v-icon :color="props.numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" icon="mdi-timer-outline" size="60" />
+          <v-icon :color="props.numPendingTimers > 0 ? 'warning' : 'grey-darken-3'" icon="mdi-timer-outline" size="50" />
         </v-badge>
         <v-badge color="warning" :content="props.numNewRecordings" inline>
           <v-icon :color="props.isRecording ? 'warning' : 'grey-darken-3'" icon="mdi-record-rec" size="60" />

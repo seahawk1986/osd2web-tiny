@@ -26,8 +26,8 @@
                   <v-col class="d-flex justify-center" cols="12">
                     <CurrentTime class="text-h1" />
                   </v-col>
-                  <v-col class="d-flex justify-center text-h2" cols="12">
-                    Waiting for osd2web plugin …
+                  <v-col class="d-flex justify-center text-xs-center text-h2" cols="12">
+                    Waiting for osd2web …
                   </v-col>
                   <v-col class="d-flex justify-center" cols="12">
                     <v-progress-circular color="primary" :indeterminate="true" size="64" />
