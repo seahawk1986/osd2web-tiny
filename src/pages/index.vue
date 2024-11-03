@@ -1,6 +1,16 @@
 <template>
   <v-card
-    v-if="store.ReplayControl?.active === 0"
+    v-if="store.DiashowData?.active === 1"
+  >
+    <v-card-title>
+      {{ store.DiashowData?.title }}
+    </v-card-title>
+    <v-card-text class="ma-0 ga-0 pa-0">
+      <v-img class="align-self-center" :src="`http://localhost:4444/${store.DiashowData?.filename}`" transition="v-slide-x" /> <!-- TODO: this needs to point to the osd2web port only if the skin is not serverd by osd2web -->
+    </v-card-text>
+  </v-card>
+  <v-card
+    v-else-if="store.ReplayControl?.active === 0"
     :border="false"
     class="ma-0 pa-0"
     elevation="0"

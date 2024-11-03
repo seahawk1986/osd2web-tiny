@@ -98,6 +98,7 @@
                 break
               case 'diashow':
                 console.log('got diashow: ', data.object)
+                store.DiashowData = data.object
                 break
               case 'replay':
                 // console.log('got replay: ', data.object)

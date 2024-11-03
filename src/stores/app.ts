@@ -138,6 +138,12 @@ export interface CustomDataInterface {
 
 export interface DiashowInterface {
   active: number
+  title?: string
+  filename?: string
+  width?: number
+  height?: number
+  orientation?: number
+  landscape?: number
   // TODO: add optional entries
 }
 
