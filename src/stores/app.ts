@@ -144,7 +144,13 @@ export interface DiashowInterface {
   height?: number
   orientation?: number
   landscape?: number
-  // TODO: add optional entries
+}
+
+export interface CommandInterface {
+  [name: string]: {
+    color: string
+    command: string
+  }
 }
 
 export interface SkinstateInterface {
@@ -153,7 +159,7 @@ export interface SkinstateInterface {
 }
 
 export const useAppStore = defineStore('app', () => {
-  const CommandData: Ref<Object> = ref({})
+  const CommandData: Ref<CommandInterface|null> = ref({})
   const CustomData: Ref<CustomDataInterface|null> = ref(null)
   const DiashowData: Ref<DiashowInterface|null> = ref(null)
   const LiveTvData: Ref<actualDataInterface|null> = ref(null)

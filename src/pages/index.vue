@@ -3,10 +3,10 @@
     v-if="store.DiashowData?.active === 1"
   >
     <v-card-title>
-      {{ store.DiashowData?.title }}
+      {{ store.DiashowData?.title || '' }} ({{ store.DiashowData?.width }}x{{ store.DiashowData?.height }})
     </v-card-title>
     <v-card-text class="ma-0 ga-0 pa-0">
-      <v-img class="align-self-center" :src="`http://localhost:4444/${store.DiashowData?.filename}`" transition="v-slide-x" /> <!-- TODO: this needs to point to the osd2web port only if the skin is not serverd by osd2web -->
+      <v-img class="align-self-center" :src="`http://localhost:4444/${store.DiashowData?.filename}`" /> <!-- TODO: this needs to point to the osd2web port only if the skin is not serverd by osd2web -->
     </v-card-text>
   </v-card>
   <v-card
