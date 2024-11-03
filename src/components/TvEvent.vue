@@ -1,7 +1,7 @@
 <template>
   <v-card
     :border="false"
-    class="ma-0 pa-0"
+    class="ma-0 pa-0 overflow-y-auto"
     elevation="0"
     flat
     height="30vh"
@@ -9,23 +9,33 @@
     variant="flat"
     width="100%"
   >
-    <v-card-title class="ma-0 pa-0 ga-0 text-h3">
+    <v-banner class="ma-0 pa-0 ga-0 text-h3" sticky>
       {{ starttime }}
-      <v-divider opacity="0" :vertical="true" />
+      <v-divider opacity="0" thickness="25" :vertical="true" />
       {{ currentEventData.title }}
-    </v-card-title>
-    <v-card-text v-if="currentEventData.shorttext?.length > 0 && currentEventData.description.length > 0" class="ma-0 pa-0 ga-0 text-h5">
-      <!-- both shorttext and description -->
-      {{ currentEventData.shorttext }} <br>
-      {{ currentEventData.description }}
-    </v-card-text>
-    <v-card-text v-else-if="currentEventData.shorttext?.length > 0 && currentEventData.description.length === 0" class="ma-0 pa-0 ga-0 text-h5">
-      <!-- only shorttext, no description -->
-      {{ currentEventData.shorttext }}
-    </v-card-text>
-    <v-card-text v-else class="ma-0 pa-0 ga-0 text-h5">
-      <!-- not shorttext, only description -->
-      {{ currentEventData.description }}
+    </v-banner>
+    <v-card-text>
+      <v-sheet
+        v-if="currentEventData.shorttext?.length > 0 && currentEventData.description.length > 0"
+        class="ma-0 pa-0 ga-0 text-h5 overflow-y-auto"
+        height="100%"
+      >
+        <!-- both shorttext and description -->
+        {{ currentEventData.shorttext }} <br>
+        {{ currentEventData.description }}
+      </v-sheet>
+      <v-sheet
+        v-else-if="currentEventData.shorttext?.length > 0 && currentEventData.description.length === 0"
+        class="ma-0 pa-0 ga-0 text-h5"
+        height="100%"
+      >
+        <!-- only shorttext, no description -->
+        {{ currentEventData.shorttext }}
+      </v-sheet>
+      <v-sheet v-else class="ma-0 pa-0 ga-0 text-h5 overflow-y-auto" height="100%">
+        <!-- not shorttext, only description -->
+        {{ currentEventData.description }}
+      </v-sheet>
     </v-card-text>
   </v-card>
 </template>
