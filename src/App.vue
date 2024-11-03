@@ -45,7 +45,7 @@
   onMounted(() => {
     try {
       wsConnection = new WebSocketClient({
-        url: 'ws://localhost:4444', // 'ws://' + location.host, // TODO: use location based url
+        url: `ws://${location.hostname}:4444`, // 'ws://' + location.host, // TODO: use location based url
         protocol: 'osd2vdr',
         autoReconnectInterval: 10000,
         onopen: () => {
