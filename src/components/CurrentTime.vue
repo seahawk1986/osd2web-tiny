@@ -1,5 +1,5 @@
 <template>
-    <v-sheet class="text-display-small">
+    <v-sheet class="text-display-medium">
         {{ currentTimeString }}
     </v-sheet>
 </template>
