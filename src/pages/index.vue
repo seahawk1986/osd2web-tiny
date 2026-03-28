@@ -24,7 +24,7 @@
         width="100%"
     >
         <v-card-title v-if="store.LiveTvData" class="pa-2">
-            <v-sheet class="pa-2 ma-2 text-h2 text-display-small">
+            <v-sheet class="pa-2 ma-2 text-h2 text-display-medium">
                 {{ store.LiveTvData.channel.channelnumber }}
                 <v-divider :vertical="true" />
                 {{ store.LiveTvData.channel.channelname }}
@@ -70,7 +70,7 @@
         width="100%"
     >
         <v-card-title class="pa-2">
-            <v-sheet class="pa-2 ma-2 text-h2 text-display-small">
+            <v-sheet class="pa-2 ma-2 text-h2 text-display-medium">
                 {{ store.ReplayData?.basename }}
             </v-sheet>
             <v-progress-linear
