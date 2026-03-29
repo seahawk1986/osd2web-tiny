@@ -1,18 +1,28 @@
+import { defineConfig } from 'vite'
+import Vue from '@vitejs/plugin-vue'
 // Plugins
+import VueRouter from 'unplugin-vue-router/vite'
+import Layouts from 'vite-plugin-vue-layouts-next' // 2. Layout Plugin
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import browserslistToEsbuild from 'browserslist-to-esbuild'
 import Fonts from 'unplugin-fonts/vite'
-import Layouts from 'vite-plugin-vue-layouts'
-import Vue from '@vitejs/plugin-vue'
-import VueRouter from 'unplugin-vue-router/vite'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // Utilities
-import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/',
+  build: {
+    target: browserslistToEsbuild(),
+    modulePreload: {
+      polyfill: false,
+    },
+    outDir: 'osd2web-tiny',
+    emptyOutDir: true
+  },
   plugins: [
     VueRouter({
       dts: 'src/typed-router.d.ts',
@@ -45,12 +55,6 @@ export default defineConfig({
       },
     }),
     Fonts({
-      // google: {
-      //   families: [{
-      //     name: 'Roboto',
-      //     styles: 'wght@100;300;400;500;700;900',
-      //   }],
-      // },
       fontsource: {
         families: [
           {
@@ -60,7 +64,31 @@ export default defineConfig({
           },
         ],
       },
+      custom: {
+        families: [
+          {
+            name: 'Material Design Icons',
+            local: 'Material Design Icons',
+            src: './node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2',
+          },
+        ],
+        display: 'block',
+        preload: false,
+      },
     }),
+    {
+      name: 'exclude-unused-fonts',
+      // Dieser Hook wird aufgerufen, bevor Vite ein Asset generiert
+      generateBundle(_, bundle) {
+        for (const fileName in bundle) {
+          // Prüfe auf die Dateiendungen, die du NICHT willst
+          if (fileName.match(/\.(ttf|eot|woff|otf)$/)) {
+            delete bundle[fileName]
+            console.log(`🗑️  Asset entfernt: ${fileName}`)
+          }
+        }
+      },
+    },
   ],
   define: { 'process.env': {} },
   resolve: {

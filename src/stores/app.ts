@@ -133,7 +133,7 @@ export interface CustomDataInterface {
     name: string
     value: string
     vcolor: string
-  } []
+  }[]
 }
 
 export interface DiashowInterface {
@@ -159,16 +159,17 @@ export interface SkinstateInterface {
 }
 
 export const useAppStore = defineStore('app', () => {
-  const CommandData: Ref<CommandInterface|null> = ref({})
-  const CustomData: Ref<CustomDataInterface|null> = ref(null)
-  const DiashowData: Ref<DiashowInterface|null> = ref(null)
-  const LiveTvData: Ref<actualDataInterface|null> = ref(null)
-  const ReplayControl: Ref<replayControlInterface|null> = ref(null)
-  const ReplayData: Ref<ReplayInterface|null> = ref(null)
+  const CommandData: Ref<CommandInterface | null> = ref({})
+  const CustomData: Ref<CustomDataInterface | null> = ref(null)
+  const DiashowData: Ref<DiashowInterface | null> = ref(null)
+  const LiveTvData: Ref<actualDataInterface | null> = ref(null)
+  const ReplayControl: Ref<replayControlInterface | null> = ref(null)
+  const ReplayData: Ref<ReplayInterface | null> = ref(null)
   const RecordingsData: Ref<RecordingInterface[]> = ref([])
-  const SkinStateData: Ref<SkinstateInterface|null> = ref(null)
+  const SkinStateData: Ref<SkinstateInterface | null> = ref(null)
   const TimerData: Ref<TimerInterface[]> = ref([])
   const CurrentView: Ref<string> = ref('actual')
+  const hasLogos: Ref<boolean> = ref(false)
 
   return {
     CommandData,
@@ -181,5 +182,6 @@ export const useAppStore = defineStore('app', () => {
     SkinStateData,
     TimerData,
     CurrentView,
+    hasLogos,
   }
 })
