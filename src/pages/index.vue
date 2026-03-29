@@ -27,8 +27,8 @@
       <v-img
         v-if="store.hasLogos"
         :width="300"
+        :max-height="150"
         aspect-ratio="16/9"
-        cover
         :src="logoUrl"
       ></v-img>
     </template>
