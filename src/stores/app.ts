@@ -171,6 +171,25 @@ export const useAppStore = defineStore('app', () => {
   const CurrentView: Ref<string> = ref('actual')
   const hasLogos: Ref<boolean> = ref(false)
 
+
+  const defaultPort = 4444
+  let params = new URLSearchParams(document.location.search);
+  const userSuppliedPort = params.get('port')
+
+  const userSuppliedisOnlyView = params.get('onlyView')
+
+  const port = computed(() => {
+    if (userSuppliedPort && userSuppliedPort.length > 0) {
+      return userSuppliedPort
+    } else { return defaultPort }
+  });
+
+  const osd2webUrlAndPort = computed(() => {
+    const host = window.location.hostname;
+    return `${host}:${port.value}`
+  })
+  console.log("baseUrl", osd2webUrlAndPort.value)
+
   return {
     CommandData,
     CustomData,
@@ -183,5 +202,6 @@ export const useAppStore = defineStore('app', () => {
     TimerData,
     CurrentView,
     hasLogos,
+    osd2webUrlAndPort,
   }
 })

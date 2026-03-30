@@ -19,7 +19,7 @@ const store = useAppStore();
 
 const isActive: Ref<boolean | null> = ref(null);
 const isOnlyView: Ref<boolean> = ref(true);
-const tftPrio: Ref<string | null> = ref(null);
+const tftPrio: Ref<number | string | null> = ref(100);
 const ErrorMessage: Ref<string | null> = ref(null);
 
 interface roleChangeInterface {
@@ -45,7 +45,7 @@ let wsConnection: WebSocketClient;
 onMounted(() => {
   try {
     wsConnection = new WebSocketClient({
-      url: `ws://${location.hostname}:4444`, // "ws://" + location.host, // TODO: use location based url
+      url: `ws://${store.osd2webUrlAndPort}`, // "ws://" + location.host, // TODO: use location based url
       protocol: "osd2vdr",
       autoReconnectInterval: 10000,
       onopen: () => {
@@ -55,10 +55,7 @@ onMounted(() => {
             event: "login",
             object: {
               type: isOnlyView.value ? 1 : 0,
-              tftprio:
-                tftPrio.value && tftPrio.value[1]
-                  ? parseInt(tftPrio.value[1], 10) || 100
-                  : 100,
+              tftprio: tftPrio.value,
             },
           });
         }

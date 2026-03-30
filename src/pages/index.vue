@@ -107,14 +107,11 @@ const store = useAppStore();
 
 import { computed } from "vue";
 
-const hostname = window.location.hostname;
-
 const logoUrl = computed(() => {
-  const host = window.location.hostname;
   const name = encodeURIComponent(store.LiveTvData?.channel.channelname || "");
   const id = encodeURIComponent(store.LiveTvData?.channel.channelid || "");
 
-  return `http://${host}:4444/data/channellogo?name=${name}&id=${id}`;
+  return `http://${store.osd2webUrlAndPort}/data/channellogo?name=${name}&id=${id}`;
 });
 
 // function getDuration (timeDeltaSeconds: number): string {
